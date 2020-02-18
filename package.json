@@ -5,6 +5,9 @@
   "repository": "https://github.com/kb4ek/ssr-backend.git",
   "author": "kb4ek <kbaek1202@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/.bin/ts-node -r tsconfig-paths/register www.ts"
+  },
   "dependencies": {
     "@types/body-parser": "^1.19.0",
     "@types/dotenv": "^8.2.0",
@@ -21,6 +24,12 @@
     "express-validator": "^6.4.0",
     "graphql": "^14.6.0",
     "morgan": "^1.9.1",
-    "sequelize": "^5.21.4"
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.4",
+    "tsconfig-paths": "^3.9.0"
+  },
+  "devDependencies": {
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
   }
 }

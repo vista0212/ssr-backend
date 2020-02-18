@@ -1,4 +1,7 @@
 import { Sequelize } from 'sequelize';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const db_config = {
   DB_HOST: process.env.DB_HOST,
@@ -21,7 +24,7 @@ export const sequelize: Sequelize = new Sequelize({
 
 export const connect = async (force: boolean, logging?: boolean) => {
   try {
-    await sequelize.sync();
+    await sequelize.sync({ force, logging });
   } catch (error) {
     console.log(error);
     process.exit(1);

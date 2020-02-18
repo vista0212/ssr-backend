@@ -3,10 +3,8 @@
     "plugins": [{ "name": "typescript-tslint-plugin" }],
     "baseUrl": ".",
     "paths": {
-      "@Middleware/*" : ["routes/middlewares/*"],
-      "@Lib/*" : ["lib/*"],
-      "@Model/*" : ["database/models/*"],
-      "@Controller/*" : ["routes/controllers/*"]
+      "@Lib/*": ["lib/*"],
+      "@Model/*": ["database/models/*"]
     },
     "lib": ["esnext"],
     "target": "esnext",
