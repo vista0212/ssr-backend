@@ -22,6 +22,13 @@ app.use(
 
 app.use('/api', apiController);
 
+app.get('/status', (req, res) => {
+  res.json({
+    success: true,
+    status: 200
+  });
+});
+
 app.use((req, res, next) => {
   // err.status = 404;
   throwError(res, 'Not_Found', 'Not Found Page');
