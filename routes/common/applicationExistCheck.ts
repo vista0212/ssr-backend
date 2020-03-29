@@ -4,13 +4,11 @@ import Application from '@Model/application.model';
 import { throwError, catchDBError } from '@Lib/error';
 
 const applicationExistCheck = async (req: Request, res: Response, next: NextFunction) => {
-  const email: Application['email'] = req.body.email;
-
-  console.log(req.url);
+  const phone: Application['phone'] = req.body.phone;
 
   const application: Application = await Application.findOne({
     where: {
-      email
+      phone
     }
   }).catch(catchDBError(res));
 

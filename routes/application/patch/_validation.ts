@@ -1,8 +1,7 @@
 import { ValidationChain, body } from 'express-validator';
 import { Field, Major } from '@Lib/types';
-import { email, password } from '@Lib/regex.json';
+import { phone, password } from '@Lib/regex.json';
 
-const major: Major[] = ['I', 'N', 'H'];
 const field: Field[] = [
   'Forensic',
   'Pwnable',
@@ -14,13 +13,7 @@ const field: Field[] = [
 
 const patchApplicationValidation: ValidationChain[] = [
   body('pk').isInt(),
-  body('email')
-    .isString()
-    .matches(email),
-  body('major')
-    .isString()
-    .custom(val => major.includes(val)),
-  body('grade').isInt({ min: 1, max: 2 }),
+  body('phone').isString(),
   body('classNum').isInt({ min: 1, max: 4 }),
   body('studentNum').isInt({ min: 1, max: 30 }),
   body('name').isString(),
