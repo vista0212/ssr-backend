@@ -6,12 +6,10 @@ import { throwError, catchDBError } from '@Lib/error';
 const applicationExistCheck = async (req: Request, res: Response, next: NextFunction) => {
   const phone: Application['phone'] = req.body.phone;
 
-  console.log(req.url);
-
   const application: Application = await Application.findOne({
     where: {
-      phone
-    }
+      phone,
+    },
   }).catch(catchDBError(res));
 
   if (req.url == '/application') {

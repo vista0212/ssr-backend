@@ -1,15 +1,14 @@
 import { ValidationChain, body } from 'express-validator';
 import { Field, Major } from '@Lib/types';
-import { email, password } from '@Lib/regex.json';
+import { phone, password } from '@Lib/regex.json';
 
-const major: Major[] = ['I', 'N', 'H'];
 const field: Field[] = [
   'Forensic',
   'Pwnable',
   'Web Hacking',
   'Web FrontEnd Development',
   'BackEnd Development',
-  'App Development'
+  'App Development',
 ];
 
 const patchApplicationValidation: ValidationChain[] = [
@@ -20,14 +19,10 @@ const patchApplicationValidation: ValidationChain[] = [
   body('name').isString(),
   body('field')
     .isString()
-    .custom(val => field.includes(val)),
-  body('content')
-    .isString()
-    .isLength({ min: 1, max: 500 }),
-  body('password')
-    .isString()
-    .matches(password),
-  body('isSubmit').isBoolean()
+    .custom((val) => field.includes(val)),
+  body('content').isString().isLength({ min: 1, max: 500 }),
+  body('password').isString().matches(password),
+  body('isSubmit').isBoolean(),
 ];
 
 export default patchApplicationValidation;

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import Application from '@Model/application.model';
-import { throwError } from '@Lib/error';
+import { catchDBError } from '@Lib/error';
 
 const postApplication = async (req: Request, res: Response, next: NextFunction) => {
   const phone: Application['phone'] = req.body.phone;
@@ -14,7 +14,7 @@ const postApplication = async (req: Request, res: Response, next: NextFunction) 
   const passwordKey: Application['passwordKey'] = res.locals.temp.passwordKey;
   const isSubmit: Application['isSubmit'] = req.body.isSubmit;
 
-  const application: Application | void = await Application.create({
+  const application: Application = await Application.create({
     phone,
     classNum,
     studentNum,
@@ -23,17 +23,14 @@ const postApplication = async (req: Request, res: Response, next: NextFunction) 
     content,
     password,
     passwordKey,
-    isSubmit
-  }).catch(err => {
-    console.log(err);
-    throwError(res, 'Database_Error', 'database error');
-  });
+    isSubmit,
+  }).catch(catchDBError(res));
 
   res.json({
     success: true,
     data: {
-      application
-    }
+      application,
+    },
   });
 };
 

@@ -6,4 +6,5 @@ export type Field =
   | 'Web Hacking'
   | 'Web FrontEnd Development'
   | 'BackEnd Development'
-  | 'App Development';
+  | 'App Development'
+  | 'Reversing';

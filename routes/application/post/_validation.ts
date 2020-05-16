@@ -1,6 +1,6 @@
 import { ValidationChain, body } from 'express-validator';
-import { Field, Major } from '@Lib/types';
-import { email, password } from '@Lib/regex.json';
+import { Field } from '@Lib/types';
+import { password } from '@Lib/regex.json';
 
 const field: Field[] = [
   'Forensic',
@@ -8,7 +8,8 @@ const field: Field[] = [
   'Web Hacking',
   'Web FrontEnd Development',
   'BackEnd Development',
-  'App Development'
+  'App Development',
+  'Reversing'
 ];
 
 const postApplicationValidation: ValidationChain[] = [
