@@ -3,8 +3,10 @@ import { ValidationChain, body } from 'express-validator';
 import { email, password } from '@Lib/regex.json';
 
 const loadApplicationValidation: ValidationChain[] = [
-  body('email').matches(email),
-  body('password').matches(password)
+  body('phone').isString(),
+  body('password')
+    .isString()
+    .matches(password)
 ];
 
 export default loadApplicationValidation;

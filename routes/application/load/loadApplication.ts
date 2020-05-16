@@ -19,8 +19,7 @@ const loadApplication = async (req: Request, res: Response, next: NextFunction) 
     data: {
       application: {
         pk: application.pk,
-        major: application.major,
-        grade: application.grade,
+        phone: application.phone,
         classNum: application.classNum,
         studentNum: application.studentNum,
         name: application.name,

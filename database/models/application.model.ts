@@ -4,9 +4,7 @@ import { Major, Field } from '@Lib/types';
 
 export default class Application extends Model<Application> {
   public pk: number;
-  public email: string;
-  public major: Major;
-  public grade: number;
+  public phone: string;
   public classNum: number;
   public studentNum: number;
   public name: string;
@@ -28,16 +26,8 @@ Application.init(
       primaryKey: true,
       allowNull: false
     },
-    email: {
+    phone: {
       type: DataTypes.STRING,
-      allowNull: false
-    },
-    major: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    grade: {
-      type: DataTypes.INTEGER,
       allowNull: false
     },
     classNum: {

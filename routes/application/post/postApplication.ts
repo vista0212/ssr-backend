@@ -1,12 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 
 import Application from '@Model/application.model';
-import { defaultTypeResolver } from 'graphql';
+import { throwError } from '@Lib/error';
 
 const postApplication = async (req: Request, res: Response, next: NextFunction) => {
-  const email: Application['email'] = req.body.email;
-  const major: Application['major'] = req.body.major;
-  const grade: Application['grade'] = req.body.grade;
+  const phone: Application['phone'] = req.body.phone;
   const classNum: Application['classNum'] = req.body.classNum;
   const studentNum: Application['studentNum'] = req.body.studentNum;
   const name: Application['name'] = req.body.name;
@@ -16,10 +14,8 @@ const postApplication = async (req: Request, res: Response, next: NextFunction) 
   const passwordKey: Application['passwordKey'] = res.locals.temp.passwordKey;
   const isSubmit: Application['isSubmit'] = req.body.isSubmit;
 
-  const application: Application = await Application.create({
-    email,
-    major,
-    grade,
+  const application: Application | void = await Application.create({
+    phone,
     classNum,
     studentNum,
     name,
@@ -28,6 +24,9 @@ const postApplication = async (req: Request, res: Response, next: NextFunction) 
     password,
     passwordKey,
     isSubmit
+  }).catch(err => {
+    console.log(err);
+    throwError(res, 'Database_Error', 'database error');
   });
 
   res.json({
