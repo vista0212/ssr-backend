@@ -7,7 +7,7 @@ const loadApplication = async (req: Request, res: Response, next: NextFunction) 
   const application: Application = res.locals.application;
 
   if (password !== application.password) {
-    throwError(res, 'Wrong_Data', '잘못된 이메일 혹은 비밀번호입니다.');
+    throwError(res, 'Wrong_Data', '잘못된 전화번호 혹은 비밀번호입니다.');
   }
 
   if (application.isSubmit) {
@@ -24,9 +24,9 @@ const loadApplication = async (req: Request, res: Response, next: NextFunction) 
         studentNum: application.studentNum,
         name: application.name,
         field: application.field,
-        content: application.content
-      }
-    }
+        content: application.content,
+      },
+    },
   });
 };
 

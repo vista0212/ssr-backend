@@ -9,7 +9,8 @@ const field: Field[] = [
   'Web FrontEnd Development',
   'BackEnd Development',
   'App Development',
-  'Reversing'
+  'Reversing',
+  'Designer',
 ];
 
 const postApplicationValidation: ValidationChain[] = [
@@ -19,14 +20,10 @@ const postApplicationValidation: ValidationChain[] = [
   body('name').isString(),
   body('field')
     .isString()
-    .custom(val => field.includes(val)),
-  body('content')
-    .isString()
-    .isLength({ min: 1, max: 500 }),
-  body('password')
-    .isString()
-    .matches(password),
-  body('isSubmit').isBoolean()
+    .custom((val) => field.includes(val)),
+  body('content').isString().isLength({ min: 1, max: 500 }),
+  body('password').isString().matches(password),
+  body('isSubmit').isBoolean(),
 ];
 
 export default postApplicationValidation;

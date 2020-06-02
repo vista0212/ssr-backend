@@ -9,6 +9,8 @@ const field: Field[] = [
   'Web FrontEnd Development',
   'BackEnd Development',
   'App Development',
+  'Reversing',
+  'Designer',
 ];
 
 const patchApplicationValidation: ValidationChain[] = [

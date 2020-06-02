@@ -7,4 +7,5 @@ export type Field =
   | 'Web FrontEnd Development'
   | 'BackEnd Development'
   | 'App Development'
-  | 'Reversing';
+  | 'Reversing'
+  | 'Designer';
