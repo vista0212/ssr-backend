@@ -25,6 +25,6 @@ router.use(checkValidation);
 
 router.post('/application', applicationExistCheck, passwordEncryption, postApplication);
 router.post('/application/load', applicationExistCheck, passwordEncryption, loadApplication);
-router.patch('/application', passwordEncryption, patchApplication);
+router.patch('/application', applicationExistCheck,passwordEncryption, patchApplication);
 
 export default router;
